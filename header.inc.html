@@ -1,0 +1,115 @@
+<div id="header">
+         
+                <div id="header-inner">
+                <!--boot class-->
+                    <div id="header-content row">
+                        <!--logo-->
+            
+                        <div class="widget-logo widget">
+                          <h1><a href="http://jayisgames.com/" title="Jay Is Games - Free Online Games">Free online games</a></h1>
+                        </div>
+<!-- sign in markup from http://jayisgames.comhttp://jayisgames.com/mt4/mt-cp.cgi?__mode=login-->
+
+<!--boot class-->
+<div id="mobile-sign-in" class="btn btn-default visible-xs-inline-block visible-sm-inline-block">
+    <div id="" class="glyphicon glyphicon-user"></div>
+</div>
+
+<!--temporary boot class-->
+<div class="widget-sign-in widget hidden-xs hidden-sm">
+    <div id="signin-widget-content" class="widget-contentr"></div>
+</div>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+function mtUpdateSignInWidget(u) {
+    var separator = '&nbsp;&nbsp;|&nbsp;&nbsp;';
+    var el = document.getElementById('signin-widget-content');
+    var content = '';
+    if (!el) return;
+    if (u) {
+        if (u && u.is_authenticated) {
+            user = u;
+            mtSaveUser();
+        } else {
+            // user really isn't logged in; so let's do this!
+            return mtSignIn();
+        }
+    } else {
+        u = mtGetUser();
+    }
+    if (u && u.name) {
+        var url;
+        if (u.is_authenticated) {
+            if (u.is_author) {
+                url = 'http://jayisgames.com/mt4/mt-cp.cgi?__mode=view&blog_id=1';
+                url += '&static=' + encodeURIComponent( location.href );
+            } else {
+                url = u.url;
+            }
+        } else if (u.url) {
+            url = u.url;
+        } else {
+            url = null;
+        }
+        if (url)
+            content += 'You are signed in as <a href="' + url + '">' + u.name + '</a>';
+        else
+            content += 'You are signed in as ' + u.name + '';
+        if (u.is_author)
+            content += separator + '<a href="http://jayisgames.com/mt4/mt-cp.cgi?__mode=edit&blog_id=1&return_to=' + encodeURIComponent(document.URL) + '">Edit profile</a>';
+        content += separator + '<a href="javascript:void(0)" onclick="return mtSignOutOnClick()">Sign out</a>';
+    } else if (u && u.is_banned) {
+        content = 'You do not have permission to sign in to this blog.';
+    } else {
+        content = '<a class="button" href="javascript:void(0)" onclick="return mtSignInOnClick(\'signin-widget-content\')">Sign In</a>';
+        /** boot class and markup **/
+		content += '<span class="hidden-xs">Not a member? <a href="http://jayisgames.com/mt4/mt-cp.cgi?__mode=register&blog_id=1&return_to=' + encodeURIComponent(document.URL) + '">Sign Up for Free</a>';
+        content += separator + '<a href="http://jayisgames.com/mt4/mt-cp.cgi?__mode=start_recover&blog_id=1&return_to=' + encodeURIComponent(document.URL) + '">Forgot your password?</a></span>';
+    }
+    el.innerHTML = content;
+}
+mtAttachEvent('usersignin', mtUpdateSignInWidget);
+mtUpdateSignInWidget();
+/* ]]> */
+</script> 
+
+<!--boot class and phone - tablet markup-->
+<div id="mobile-fav" class="btn btn-default visible-xs-inline-block visible-sm-inline-block" data-toggle="collapse" data-target="#fav-games-mobile">
+<span class="glyphicon glyphicon-star-empty"></span>
+</div>
+
+
+ <!--boot class and phone - tablet markup-->
+ <div id="mobile-search" class="btn btn-default visible-xs-inline-block visible-sm-inline-block" data-toggle="collapse" data-target=".widget-search">
+<span class="glyphicon glyphicon-search"></span>
+</div>
+                     
+<!--search-->
+<!--boot class-->
+<!--will need to be visible on big monitors, adding class in on full size-->
+<div class="widget-search widget collapse">
+		<div class="widget-content">
+			<div id="search-google">
+				<form id="cse-search-box" action="http://jayisgames.com/search/">
+		<div id="search-text">
+			<input type="hidden" value="partner-pub-4854273876013864:9692641413" name="cx" />
+			<input type="hidden" value="FORID:11" name="cof" />
+			<input type="hidden" value="ISO-8859-1" name="ie" />
+			<input type="text" size="24" name="q" style="border: 1px solid rgb(126, 157, 185); padding: 2px; background: url('http://www.google.com/cse/intl/en/images/google_custom_search_watermark.gif') no-repeat scroll left center rgb(255, 255, 255);" />
+		</div>
+			<div id="search-submit">
+			<input type="submit" value="Search" name="sa" />
+			</div>
+		<input type="hidden" name="siteurl" value="jayisgames.com/games/" /><input type="hidden" name="ref" value="jayisgames.com/" /><input type="hidden" name="ss" /></form>
+		<script src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en" type="text/javascript"></script>
+		</div>
+    </div>
+</div> 
+
+
+
+          </div>
+                </div>
+
+            </div>

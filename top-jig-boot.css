@@ -1,0 +1,2 @@
+/*importing bootstrap to hide boot classes on larger monitors and for bootstrap switch filter*/
+@import url(bootstrap-3.2.0/css/bootstrap.min.css) (min-width: 800px);
